@@ -23,6 +23,11 @@ node{
     }
    sh 'docker push priyasivaya/myweb:0.0.2'
    }
+  stage('Nexus Image Push'){
+   sh "docker login -u priyasivaya -p Priya92@123 43.205.138.133:9009"
+   sh "docker tag priyasivaya/myweb:0.0.2 43.205.138.133:9009/damo:1.0.0"
+   sh 'docker push 43.205.138.133:9009/damo:1.0.0'
+   }
    stage('Remove Previous Container'){
 	try{
 		sh 'docker rm -f tomcattest'
